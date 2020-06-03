@@ -1,20 +1,24 @@
-# SPOT in Python
+# VISPP
 
-This repository contains the code for SPOT as implemented in python using [mne](https://github.com/mne-tools/mne-python).
+This repository contains visualizations I use for analysis / some papers. These are the abstract functions that should
+be generally applicable to data. For more in-depth explanations please refer to the respective functions. 
 
 ## Installation
 
-Setup the `spot_venv` using:
+If you have `make` installed, setup the virtual environment using:
 
 ```
 make venv
 ```
 
-## Running scripts
+## Examples
 
-Copy `scripts/local_config.yaml.example` to `scripts/local_config.yaml` and edit the relevant entries in your own file.
+There are some example scripts that plot random / fantasy data under `examples/`. Before you run any of these please
+activate the virtual environment using:
 
-Scripts begin with `main_`.
+```
+source vispp_venv/bin/activate
+```
 
 ### Running Tests
 
