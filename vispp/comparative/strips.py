@@ -14,9 +14,10 @@ def plot_matched(
     match_col=None,
     x_match_sort=None,
     title=None,
+    x_xoffset=0.2,
     ax=None,
     figsize=(9, 6),
-    sort_marker="●",
+    sort_marker="⇕",
     error="amend",
 ):
     if ax is None:
@@ -37,20 +38,27 @@ def plot_matched(
             else:
                 print(f"WARNING: {errorwarn_string}")
                 x_match_sort = None
+    else:
+        x_order = list(data[x].unique())
+        if x_match_sort is not None:
+            x_order.remove(x_match_sort)
+            x_order.insert(0, x_match_sort)
     cp = sns.color_palette()
     marker_arr = ["^", "s", "p", "H", "o"]
     n_markers = len(marker_arr)
     num_x = len(data[x].unique())
     num_matched = len(data[match_col].unique())
     sort_idx = None
+    legend_labels = data[match_col].unique()
     if x_match_sort is not None:
         sort_idx = (
             data.loc[data[x] == x_match_sort]
             .sort_values(by=match_col, ascending=True)
             .reset_index()
-            .sort_values(by="score", ascending=True)
+            .sort_values(by=y, ascending=True)
             .index.copy()
         )
+        legend_labels = legend_labels[sort_idx]
     c_offs_left = 2
     c_offs_right = 2
     gmap = LinearSegmentedColormap.from_list(
@@ -58,7 +66,7 @@ def plot_matched(
         [(0, 0, 0), (0.5, 0.5, 0.5), (1, 1, 1)],
         N=(num_matched // n_markers + 1 + c_offs_left + c_offs_right),
     )
-    legend_markers = []
+    legend_handles = []
     for i, x_main in enumerate(x_order):
         base_col = cp[i]
         cmap = LinearSegmentedColormap.from_list(
@@ -72,7 +80,7 @@ def plot_matched(
         if sort_idx is not None:
             r = r.iloc[sort_idx]
         x_center = i + 1
-        x_width = 0.45
+        x_width = 0.5 - x_xoffset/2
         x_space = np.linspace(x_center - x_width, x_center + x_width, num_matched)
         m_score, m_std = r.aggregate((np.mean, np.std))[y]
         m_err = m_std / np.sqrt(num_matched)
@@ -116,7 +124,7 @@ def plot_matched(
                 color=cmap((j // n_markers) + c_offs_left),
             )
             if i == 0:
-                legend_markers.append(
+                legend_handles.append(
                     Line2D(
                         [0],
                         [0],
@@ -141,4 +149,6 @@ def plot_matched(
             tick.set_color(cp[i])
     if title is not None:
         ax.set_title(title)
-    return ax, legend_markers
+    ax.set_xlabel(x)
+    ax.set_ylabel(y)
+    return ax, (legend_handles, legend_labels)
