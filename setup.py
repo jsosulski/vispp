@@ -18,7 +18,7 @@ URL = "https://github.com/jsosulski/vispp"
 EMAIL = "mail@jan-sosulski.de"
 AUTHOR = "Jan Sosulski"
 REQUIRES_PYTHON = ">=3.6.0"
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 LICENSE = "Proprietary"
 
 # What packages are required for this module to be executed?
