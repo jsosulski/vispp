@@ -17,7 +17,7 @@ def plot_matched(
     x_xoffset=0.2,
     ax=None,
     figsize=(9, 6),
-    sort_marker="⇕",
+    sort_marker="⇔",
     error="amend",
 ):
     if ax is None:

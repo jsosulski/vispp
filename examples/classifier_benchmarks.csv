@@ -1,26 +1,36 @@
 Classifier,Subject,Score
 SVM, 1, 0.632
-LDA, 1, 0.572
+Fancy, 1, 0.572
 Naive Bayes, 1, 0.668
 Neural Network, 1, 0.717
 XGBoost, 1, 0.633
 SVM, 2, 0.688
-LDA, 2, 0.780
+Fancy, 2, 0.780
 Naive Bayes, 2, 0.712
 Neural Network, 2, 0.770
 XGBoost, 2, 0.725
 SVM, 3, 0.772
-LDA, 3, 0.823
+Fancy, 3, 0.823
 Naive Bayes, 3, 0.732
 Neural Network, 3, 0.853
 XGBoost, 3, 0.763
 SVM, 4, 0.601
-LDA, 4, 0.634
+Fancy, 4, 0.634
 Naive Bayes, 4, 0.554
 Neural Network, 4, 0.587
 XGBoost, 4, 0.542
 SVM, 5, 0.717
-LDA, 5, 0.742
+Fancy, 5, 0.742
 Naive Bayes, 5, 0.726
 Neural Network, 5, 0.686
 XGBoost, 5, 0.685
+SVM, 6, 0.715
+Fancy, 6, 0.752
+Naive Bayes, 6, 0.721
+Neural Network, 6, 0.683
+XGBoost, 6, 0.689
+SVM, 7, 0.712
+Fancy, 7, 0.741
+Naive Bayes, 7, 0.728
+Neural Network, 7, 0.696
+XGBoost, 7, 0.675

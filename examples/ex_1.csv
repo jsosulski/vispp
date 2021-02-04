@@ -1,0 +1,11 @@
+Classifier,Subject,Score
+Method A, 1, 0.5
+Method B, 1, 0.9
+Method A, 2, 0.6
+Method B, 2, 0.8
+Method A, 3, 0.7
+Method B, 3, 0.7
+Method A, 4, 0.8
+Method B, 4, 0.6
+Method A, 5, 0.9
+Method B, 5, 0.5
