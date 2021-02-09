@@ -263,3 +263,5 @@ dmypy.json
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,python,pycharm+all
 vispp_venv
+
+examples/example*.png

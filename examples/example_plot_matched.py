@@ -19,14 +19,14 @@ sns.stripplot(x="Classifier", y="Score", data=df_ex1, ax=ax[1])
 ax[1].set_title("Strip plot")
 ax[0].set_ylim((0, 1))
 fig.tight_layout()
-fig.savefig("example_bar_strip.png")
+fig.savefig("example_bar_strip.png", dpi=180)
 
 plt.show()
 # %%
 fig, ax = plt.subplots(1, 1, figsize=(3, 3))
 ax.scatter(
-    df_ex1.loc[df_ex1.Classifier == "Classifier A"].Score,
-    df_ex1.loc[df_ex1.Classifier == "Classifier B"].Score,
+    df_ex1.loc[df_ex1.Classifier == "Method A"].Score,
+    df_ex1.loc[df_ex1.Classifier == "Method B"].Score,
     zorder=10,
 )
 ax.set_xlabel("Score Classifier A")
@@ -34,14 +34,14 @@ ax.set_ylabel("Score Classifier B")
 ax.set_aspect("equal", adjustable="box")
 ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="k", linestyle="--")
 fig.tight_layout()
-fig.savefig("example_pair.png")
+fig.savefig("example_pair.png", dpi=180)
 plt.show()
 # %%
 fig, ax = plt.subplots(1, 1, figsize=(5, 3))
 ax, li = plot_matched(df_ex1, x="Classifier", y="Score", match_col="Subject", ax=ax)
 ax.legend(li[0], li[1], title="Subject", bbox_to_anchor=(1.05, 1), loc="upper left")
 fig.tight_layout()
-fig.savefig("example_matched.png")
+fig.savefig("example_matched.png", dpi=180)
 plt.show()
 # %% New plot function
 fig, ax = plt.subplots(1, 1, figsize=(5, 3))
@@ -60,4 +60,5 @@ ax, leg_info = plot_matched(
 ax.legend(leg_info[0], leg_info[1], title="Subject", bbox_to_anchor=(1.05, 1), loc="upper left")
 ax.set_title("Comparison of classifiers (fake data)")
 fig.tight_layout()
+fig.savefig("example_fakedata.png", dpi=180)
 plt.show()
