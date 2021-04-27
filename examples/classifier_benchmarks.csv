@@ -1,4 +1,4 @@
-Classifier,Subject,Score
+Classifier,Subject,Score (AUC)
 SVM, 1, 0.632
 Fancy, 1, 0.572
 Naive Bayes, 1, 0.668

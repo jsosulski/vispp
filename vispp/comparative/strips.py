@@ -1,9 +1,10 @@
-from matplotlib.colors import LinearSegmentedColormap
-import seaborn as sns
+import re
+
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
+from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.lines import Line2D
-import re
 
 
 def plot_matched(
@@ -80,7 +81,7 @@ def plot_matched(
         if sort_idx is not None:
             r = r.iloc[sort_idx]
         x_center = i + 1
-        x_width = 0.5 - x_xoffset/2
+        x_width = 0.5 - x_xoffset / 2
         x_space = np.linspace(x_center - x_width, x_center + x_width, num_matched)
         m_score, m_std = r.aggregate((np.mean, np.std))[y]
         m_err = m_std / np.sqrt(num_matched)

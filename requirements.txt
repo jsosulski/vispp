@@ -1,12 +1,2 @@
-cycler
-kiwisolver
-matplotlib
-numpy
-pandas
-pkg-resources
-pyparsing
-python-dateutil
-pytz
-scipy
+matplotlib<=3.3.4  # Currently a bug in 3.4.1 prevents usage of newest matplotlib
 seaborn
-six
