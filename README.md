@@ -28,6 +28,8 @@ something similar to a strips / scatter plot to compare the performance of, e.g.
 different classifiers on the same dataset, as long as the number off data points is
 somewhat limited.
 
+<img alt="Plot matched function example using fake data." src="https://user-images.githubusercontent.com/2545339/116259513-27c2f600-a776-11eb-92d2-dba51e876f8f.png" width="80%">
+
 The added benefit of this plot function is that you can compare / track a single subject
 across the classifiers. This is achieved by selecting same markers for the same data point
 and a consistent x-position within one strip. Usually you want are interested mostly in
