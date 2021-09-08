@@ -1,2 +1,2 @@
-matplotlib<=3.3.4  # Currently a bug in 3.4.1 prevents usage of newest matplotlib
+matplotlib>3.4.1  # Currently a bug in 3.4.1 prevents usage of newest matplotlib
 seaborn
