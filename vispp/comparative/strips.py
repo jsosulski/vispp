@@ -138,8 +138,11 @@ def plot_matched(
                 )
                 # need to translate markersize between scatter and plt function, 1.2*sqrt() seems to work kind of
     ax.set_xticks(np.arange(1, num_x + 1))
+    xticklabels = list(x_order)
     if x_match_sort is not None:
-        x_order[x_order.index(x_match_sort)] = sort_marker + x_order[x_order.index(x_match_sort)]
+        xticklabels[x_order.index(x_match_sort)] = (
+            sort_marker + x_order[x_order.index(x_match_sort)]
+        )
     ax.set_xticklabels(x_order)
     ax.set_xlim(0, num_x + 1)
     for i, tick in enumerate(ax.get_xticklabels()):
