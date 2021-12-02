@@ -1,7 +1,7 @@
 from matplotlib.backends.backend_pdf import PdfPages
 
 
-def better_savefig(fig, figfile, **kwargs):
+def better_savefig(fig, figfile, format="pdf", **kwargs):
     """To be used instead of .savefig
 
     This function saves pdfs without creation date. So subsequent
@@ -9,6 +9,6 @@ def better_savefig(fig, figfile, **kwargs):
     """
     if format == "pdf":
         with PdfPages(figfile, metadata={"CreationDate": None}) as pdf:
-            pdf.savefig(fig)
+            pdf.savefig(fig, **kwargs)
     else:
-        fig.savefig(figfile, *kwargs)
+        fig.savefig(figfile, **kwargs)
