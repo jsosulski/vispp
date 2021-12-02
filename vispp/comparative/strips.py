@@ -20,6 +20,7 @@ def plot_matched(
     figsize=(9, 6),
     sort_marker="⇔",
     error="amend",
+    cp=None,
 ):
     if ax is None:
         fig, ax = plt.subplots(1, 1, facecolor="white", figsize=figsize)
@@ -44,7 +45,7 @@ def plot_matched(
         if x_match_sort is not None:
             x_order.remove(x_match_sort)
             x_order.insert(0, x_match_sort)
-    cp = sns.color_palette()
+    cp = sns.color_palette() if cp is None else cp
     marker_arr = ["^", "s", "p", "H", "o"]
     n_markers = len(marker_arr)
     num_x = len(data[x].unique())
