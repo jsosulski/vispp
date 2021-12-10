@@ -144,7 +144,7 @@ def plot_matched(
         xticklabels[x_order.index(x_match_sort)] = (
             sort_marker + x_order[x_order.index(x_match_sort)]
         )
-    ax.set_xticklabels(x_order)
+    ax.set_xticklabels(xticklabels)
     ax.set_xlim(0, num_x + 1)
     for i, tick in enumerate(ax.get_xticklabels()):
         if len(tick.get_text()) > 0:
