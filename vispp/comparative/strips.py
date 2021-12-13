@@ -14,7 +14,7 @@ def plot_matched(
     x_order=None,
     match_col=None,
     x_match_sort=None,
-    sort_idx = None,
+    sort_idx=None,
     title=None,
     x_xoffset=0.2,
     ax=None,
@@ -23,13 +23,13 @@ def plot_matched(
     error="amend",
     cp=None,
 ):
-    if bool(x_match_sort) and bool(sort_idx):
+    if x_match_sort is not None and sort_idx is not None:
         raise ValueError("Either x_match_sort or sort_idx should be passed, not both!")
 
     if ax is None:
         fig, ax = plt.subplots(1, 1, facecolor="white", figsize=figsize)
     if x_order is not None:
-        #data = data.loc[data[x].str.match("|".join([re.escape(xo) for xo in x_order]))]
+        # data = data.loc[data[x].str.match("|".join([re.escape(xo) for xo in x_order]))]
         x_order = list(x_order)
         data = data.loc[data[x].isin(x_order)]
         ux = data[x].unique()
