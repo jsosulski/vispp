@@ -14,6 +14,7 @@ def plot_matched(
     x_order=None,
     match_col=None,
     x_match_sort=None,
+    sort_idx = None,
     title=None,
     x_xoffset=0.2,
     ax=None,
@@ -22,16 +23,21 @@ def plot_matched(
     error="amend",
     cp=None,
 ):
+    if bool(x_match_sort) and bool(sort_idx):
+        raise ValueError("Either x_match_sort or sort_idx should be passed, not both!")
+
     if ax is None:
         fig, ax = plt.subplots(1, 1, facecolor="white", figsize=figsize)
     if x_order is not None:
-        data = data.loc[data[x].str.match("|".join([re.escape(xo) for xo in x_order]))]
+        #data = data.loc[data[x].str.match("|".join([re.escape(xo) for xo in x_order]))]
+        x_order = list(x_order)
+        data = data.loc[data[x].isin(x_order)]
         ux = data[x].unique()
         clean_order = [x_order[i] for i in range(len(x_order)) if x_order[i] in ux]
         if len(clean_order) < len(x_order):
             print("Warning: Truncating ordering, as some pipelines not existing in data frame.")
             x_order = clean_order
-        if x_match_sort not in x_order:
+        if x_match_sort is not None and x_match_sort not in x_order:
             errorwarn_string = (
                 f"Cannot sort by {x_match_sort} as it is not in {x_order} / data array."
             )
@@ -50,7 +56,6 @@ def plot_matched(
     n_markers = len(marker_arr)
     num_x = len(data[x].unique())
     num_matched = len(data[match_col].unique())
-    sort_idx = None
     legend_labels = data[match_col].unique()
     if x_match_sort is not None:
         sort_idx = (
@@ -60,6 +65,7 @@ def plot_matched(
             .sort_values(by=y, ascending=True)
             .index.copy()
         )
+    if sort_idx is not None:
         legend_labels = legend_labels[sort_idx]
     c_offs_left = 2
     c_offs_right = 2
