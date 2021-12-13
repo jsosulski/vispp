@@ -24,7 +24,7 @@ def plot_matched(
     cp=None,
 ):
     if x_match_sort is not None and sort_idx is not None:
-        raise ValueError("Either x_match_sort or sort_idx should be passed, not both!")
+        print("Warning: using x_match_sort only for sort_marker because sort_idx is set")
 
     if ax is None:
         fig, ax = plt.subplots(1, 1, facecolor="white", figsize=figsize)
@@ -48,7 +48,7 @@ def plot_matched(
                 x_match_sort = None
     else:
         x_order = list(data[x].unique())
-        if x_match_sort is not None:
+        if x_match_sort is not None and sort_idx is None:
             x_order.remove(x_match_sort)
             x_order.insert(0, x_match_sort)
     cp = sns.color_palette() if cp is None else cp
@@ -57,7 +57,7 @@ def plot_matched(
     num_x = len(data[x].unique())
     num_matched = len(data[match_col].unique())
     legend_labels = data[match_col].unique()
-    if x_match_sort is not None:
+    if x_match_sort is not None and sort_idx is None:
         sort_idx = (
             data.loc[data[x] == x_match_sort]
             .sort_values(by=match_col, ascending=True)
@@ -65,6 +65,7 @@ def plot_matched(
             .sort_values(by=y, ascending=True)
             .index.copy()
         )
+        print(sort_idx)
     if sort_idx is not None:
         legend_labels = legend_labels[sort_idx]
     c_offs_left = 2
